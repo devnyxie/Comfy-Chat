@@ -6,7 +6,9 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import notification from "./Sounds/notification.mp3";
 
-let socket = io("http://localhost:3000", { autoConnect: false });
+let socket = io("https://comfy-chat-be-production.up.railway.app", {
+  autoConnect: false,
+});
 function App() {
   const [username, setUsername] = useState("");
   const [usernameAlreadySelected, setUsernameAlreadySelected] = useState(false);
