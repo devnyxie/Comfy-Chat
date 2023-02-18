@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+#center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  height: 70vh;
+}
+#input {
+  background: rgb(248, 249, 250);
+  background: linear-gradient(
+    180deg,
+    rgba(248, 249, 250, 1) 0%,
+    rgba(255, 231, 243, 1) 100%
+  );
+}
+.glass {
+  /* From https://css.glass */
+  background: rgba(44, 47, 152, 0.45);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
