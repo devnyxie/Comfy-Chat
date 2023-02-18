@@ -6,7 +6,7 @@ import { GoPrimitiveDot } from "react-icons/go";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import notification from "./Sounds/notification.mp3";
 
-let socket = io("https://comfy-chat-be-production.up.railway.app", {
+let socket = io("https://comfy-chat-be-production.up.railway.app/", {
   autoConnect: false,
 });
 function App() {
@@ -107,7 +107,6 @@ function App() {
     }
   };
 
-  //
   const handleKeypress = (e) => {
     if (e.keyCode === 13) {
       sendMessage();
@@ -169,7 +168,7 @@ function App() {
                   borderRight: "1px solid white",
                 }}
               >
-                <ListGroup style={{ maxHeight: "100%", overflow: "hidden" }}>
+                <ListGroup>
                   {Users.map((user, index) => {
                     const startChat = () => {
                       setSelectedUser(user);
