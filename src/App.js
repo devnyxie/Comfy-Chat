@@ -92,7 +92,7 @@ function App() {
           hour12: true,
         }),
       });
-
+      console.log("message sent!");
       selectedUser.messages.push({
         content,
         fromSelf: true,
@@ -148,6 +148,13 @@ function App() {
     fieldToSet(value);
   };
 
+  useEffect(() => {
+    try {
+      console.log(Users);
+    } catch (error) {
+      console.log(error);
+    }
+  });
   return (
     <>
       {usernameAlreadySelected ? (
@@ -168,42 +175,52 @@ function App() {
                   borderRight: "1px solid white",
                 }}
               >
-                <ListGroup>
-                  {Users.map((user, index) => {
-                    const startChat = () => {
-                      setSelectedUser(user);
-                    };
-                    return (
-                      <ListGroup.Item
-                        key={index}
-                        className=" text-dark d-flex align-items-center"
-                        onClick={startChat}
-                        style={{ maxHeight: "60px" }}
-                      >
-                        <div className="me-2">
-                          <img
-                            src={user.pfp}
-                            style={{ width: "40px", borderRadius: "50%" }}
-                          />
-                        </div>
-                        <div>
-                          {index === 0 ? (
-                            <div>{user.username} (yourself)</div>
-                          ) : (
-                            <div>{user.username}</div>
-                          )}
+                <ListGroup style={{ maxHeight: "100%", overflow: "hidden" }}>
+                  {Users === undefined ? (
+                    <>
+                      <div className="w-100 h-100 d-flex justify-content-center align-items-center">
+                        Connecting...
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {Users.map((user, index) => {
+                        const startChat = () => {
+                          setSelectedUser(user);
+                        };
+                        return (
+                          <ListGroup.Item
+                            key={index}
+                            className=" text-dark d-flex align-items-center"
+                            onClick={startChat}
+                            style={{ maxHeight: "60px" }}
+                          >
+                            <div className="me-2">
+                              <img
+                                src={user.pfp}
+                                style={{ width: "40px", borderRadius: "50%" }}
+                              />
+                            </div>
+                            <div>
+                              {index === 0 ? (
+                                <div>{user.username} (yourself)</div>
+                              ) : (
+                                <div>{user.username}</div>
+                              )}
 
-                          <div className="d-flex">
-                            <GoPrimitiveDot
-                              style={{ color: "green" }}
-                              size={20}
-                            />{" "}
-                            Online
-                          </div>
-                        </div>
-                      </ListGroup.Item>
-                    );
-                  })}
+                              <div className="d-flex align-items-center">
+                                <GoPrimitiveDot
+                                  style={{ color: "green" }}
+                                  size={20}
+                                />
+                                Online
+                              </div>
+                            </div>
+                          </ListGroup.Item>
+                        );
+                      })}
+                    </>
+                  )}
                 </ListGroup>
               </div>
               <div
@@ -237,7 +254,7 @@ function App() {
                         if (message.fromSelf !== true) {
                           return (
                             <>
-                              <div className=" p-1 pt-2 pb-2">
+                              <div className=" p-1 pt-2 pb-2" key={index}>
                                 <div className="w-100 d-flex justify-content-start">
                                   <div
                                     className="text-muted"
@@ -341,7 +358,7 @@ function App() {
                 style={{ backgroundColor: "#D63384" }}
                 onClick={onUsernameSelection}
               >
-                Login
+                Join
               </Button>
             </header>
           </div>
