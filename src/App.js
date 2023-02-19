@@ -162,7 +162,7 @@ function App() {
           className="d-flex justify-content-center align-items-center w-100 "
           style={{
             height: "100vh",
-            backgroundImage: `url(https://images8.alphacoders.com/749/749455.png)`,
+            backgroundImage: `url(https://i.imgur.com/A4grpNB.png)`,
           }}
         >
           <div className="w-100 h-100" style={{ backdropFilter: "blur(2px)" }}>
@@ -353,13 +353,27 @@ function App() {
                   placeholder="Enter username"
                 />
               </Form.Group>
-              <Button
-                className=" border-0"
-                style={{ backgroundColor: "#D63384" }}
-                onClick={onUsernameSelection}
-              >
-                Join
-              </Button>
+              {username.length > 2 ? (
+                <Button
+                  className=" border-0"
+                  style={{ backgroundColor: "#D63384" }}
+                  onClick={onUsernameSelection}
+                >
+                  Join
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Enter at least 3 characters"
+                    className=" border-0"
+                    style={{ backgroundColor: "#a8306a" }}
+                  >
+                    Join
+                  </Button>
+                </>
+              )}
             </header>
           </div>
         </div>
