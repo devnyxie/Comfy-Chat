@@ -5,5 +5,4 @@ In one click, you can "join" and be able to chat with every user online.
 </p>
 
 
-
-Debugging was done with the help of   [Damian O.](https://github.com/CaneVoidNine)                      
+                      
